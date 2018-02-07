@@ -373,7 +373,7 @@ func (c *Conn) handleData(arg string) {
 		if smtperr, ok := err.(*smtpError); ok {
 			c.WriteResponse(smtperr.Code, smtperr.Message)
 		} else {
-			c.WriteResponse(554, "Error: transaction failed, blame it on the weather: "+err.Error())
+			c.WriteResponse(554, "Error: transaction failed: "+err.Error())
 		}
 	} else {
 		c.WriteResponse(250, "Ok: queued")
